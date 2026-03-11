@@ -11,7 +11,7 @@ from db import fetch_latest
 
 
 # Define paths
-ROOT = Path(__file__).resolve().parents[2]  # Adjust based on your structure
+ROOT = Path(__file__).resolve().parents[2] 
 MODEL_PATH = ROOT / "models" / "student_dropout_xgb.pkl"
 DATA_PATH = ROOT / "data" / "student_dataset_processed.csv"
 

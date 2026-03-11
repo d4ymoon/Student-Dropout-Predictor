@@ -192,17 +192,8 @@ def render():
                 auc_df.style.apply(highlight_top_models, axis=1).format({"AUC": "{:.3f}"}),
                 use_container_width=True,
                 hide_index=True,
-                height=175 # Adjust height to match plot
+                height=175 
             )
-            
-
-        # Keep metrics below for a quick summary
-        st.divider()
-        m_col1, m_col2, m_col3, m_col4 = st.columns(4)
-        m_col1.metric("LogReg", f"{roc_data.get('Logistic Regression', {}).get('auc', 0):.3f}")
-        m_col2.metric("RF", f"{roc_data.get('Random Forest', {}).get('auc', 0):.3f}")
-        m_col3.metric("Balanced RF", f"{roc_data.get('Balanced RF', {}).get('auc', 0):.3f}")
-        m_col4.metric("XGBoost", f"{roc_data.get('XGBoost', {}).get('auc', 0):.3f}", delta="Best")
         
     else:
         st.error("❌ ROC data file not found. Please ensure roc_data.pkl exists in the data directory.")
@@ -289,26 +280,26 @@ def render():
     # Your actual top features from the preprocessing (from the XGBoost importance output)
     feature_importance_data = {
         "Feature": [
-            "Curricular units 2nd sem (grade)",
-            "Curricular units 1st sem (grade)",
             "Curricular units 2nd sem (approved)",
+            "Course - Animation and Multimedia Design",
+            "Tuiton fees up to date",
             "Curricular units 1st sem (approved)",
-            "Curricular units 2nd sem (enrolled)",
-            "Age at enrollment",
+            "Curricular units 2nd sem (grade)",
             "Curricular units 1st sem (enrolled)",
-            "Tuition fees up to date",
-            "Scholarship holder",
-            "GDP",
-            "Unemployment rate",
-            "Inflation rate",
             "Debtor",
-            "Curricular units 1st sem (credited)",
-            "Curricular units 2nd sem (credited)"
+            "Father's qualification - Supplementary Accounting and Administration",
+            "Curricular units 2nd sem (credited)",
+            "Curricular units 2nd sem (enrolled)",
+            "Mother's qualification - 7th year of schooling",
+            "Scholarship holder",
+            "Course - Basic Education",
+            "Age at enrollment",
+            "Curricular units 1st sem (credited)"
         ],
         "Importance": [
-            0.142, 0.128, 0.095, 0.087, 0.062,
-            0.058, 0.051, 0.048, 0.042, 0.038,
-            0.035, 0.032, 0.028, 0.025, 0.022
+            0.113, 0.067, 0.055, 0.039, 0.030,
+            0.019, 0.018, 0.016, 0.015, 0.015,
+            0.014, 0.013, 0.013, 0.012, 0.012
         ]
     }
     
@@ -339,24 +330,21 @@ def render():
     with st.expander("📝 Detailed Feature Explanations"):
         st.markdown("""
         ### Top Academic Features
-        - **Curricular units 2nd sem (grade)**: Average grade in second semester courses (most important)
-        - **Curricular units 1st sem (grade)**: Average grade in first semester courses
         - **Curricular units 2nd sem (approved)**: Number of courses passed in second semester
         - **Curricular units 1st sem (approved)**: Number of courses passed in first semester
+        - **Curricular units 1st sem (grade)**: Average grade in first semester courses
         - **Curricular units 2nd sem (enrolled)**: Number of courses enrolled in second semester
+        - **Curricular units 1st sem (enrolled)**: Number of courses enrolled in first semester
+        - **Curricular units 1st sem (credited): The number of curricular units credited by the student in the first semester
+        - **Curricular units 2nd sem (credited): The number of curricular units credited by the student in the second semester
         
         ### Demographic Features
         - **Age at enrollment**: Student's age when enrolling (older students may have different risk patterns)
         
         ### Socioeconomic Features
         - **Tuition fees up to date**: Whether tuition payments are current
-        - **Scholarship holder**: Whether student receives financial aid
         - **Debtor**: Whether student has outstanding debts
-        
-        ### Economic Indicators
-        - **GDP**: Gross Domestic Product indicator
-        - **Unemployment rate**: Regional unemployment rate
-        - **Inflation rate**: Economic inflation rate
+
         """)
     
     st.divider()
