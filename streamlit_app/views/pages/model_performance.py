@@ -279,8 +279,8 @@ def render():
         - **Curricular units 1st sem (grade)**: Average grade in first semester courses
         - **Curricular units 2nd sem (enrolled)**: Number of courses enrolled in second semester
         - **Curricular units 1st sem (enrolled)**: Number of courses enrolled in first semester
-        - **Curricular units 1st sem (credited): The number of curricular units credited by the student in the first semester
-        - **Curricular units 2nd sem (credited): The number of curricular units credited by the student in the second semester
+        - **Curricular units 1st sem (credited)**: The number of curricular units credited by the student in the first semester
+        - **Curricular units 2nd sem (credited)**: The number of curricular units credited by the student in the second semester
         
         ### Demographic Features
         - **Age at enrollment**: Student's age when enrolling (older students may have different risk patterns)
